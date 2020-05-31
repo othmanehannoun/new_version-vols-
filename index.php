@@ -28,7 +28,7 @@ if(mysqli_num_rows($query) > 0 ){
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="css/logi.css">
 </head>
 <body>
 	

@@ -1,7 +1,7 @@
 
 <?php
-session_start();
 include "header.php"; 
+include "userclass.php";
 $db = mysqli_connect("127.0.0.1", "root", "", "db_gestionvols");
 
    $id=$_GET['id'];
@@ -11,16 +11,16 @@ $db = mysqli_connect("127.0.0.1", "root", "", "db_gestionvols");
     }
 
 if (isset($_POST['modifier'])) {
-    $id1         = $_POST['id1'];
-    $name        = $_POST['user'];
-    $email       = $_POST['email'];
-    $password    =$_POST['pass'];
-    $status      =$_POST['status'];
+    $id1             = $_POST['id1'];
+    $name            = $_POST['user'];
+    $email           = $_POST['email'];
+    $password        =$_POST['pass'];
+    $status          =$_POST['status'];
 
-    $req = mysqli_query($db,"UPDATE users set username = '$name', mail = '$email', pass_word = '$password', statu = '$status'  WHERE iduser = '$id1'");
-   
-   if($req == true){
-  
+    $users = new User();
+    $users->user_update($id1, $name, $email, $password, $status);
+
+    if($users == true){
      header("location: admin.php?message=This is a success alert—check it out!");
    }
 

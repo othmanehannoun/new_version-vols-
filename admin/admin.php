@@ -1,7 +1,7 @@
 <?php
-   session_start();
-   
-	include "header.php"; 
+
+   	include "header.php"; 
+	include "userclass.php";
    
 	$db = mysqli_connect("127.0.0.1", "root", "", "db_gestionvols");
     $query = mysqli_query($db, "SELECT * from users where statu = 'Admin'" );
@@ -13,8 +13,9 @@
       $pass = $_POST['pass'];
       $status = $_POST['status'];
     
-	  $query1 = mysqli_query($db, "INSERT INTO users values('', '$user', '$mail', '$pass', '$status')");
-	  
+	  $users = new User();
+	  $users->user_insert($user, $mail, $pass, $status);
+
 	  header("Location: admin.php");
 
 	}
@@ -24,7 +25,7 @@
 
 
 
-<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/admi.css">
 
 
  <!-- My Box Content -->

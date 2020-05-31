@@ -1,6 +1,8 @@
 
 <?php 
 
+session_start();
+
 $db = mysqli_connect("localhost", "root", "", "db_gestionVols");
 
   $idVol = $_GET['id'];
@@ -60,7 +62,15 @@ if (isset($_POST['reserver'])){
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#">About</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?php echo $_SESSION['USERNAME'];?>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Reservation</a>
+  
+        </div>
+      </li>
       <a class="nav-item nav-link" href="#">Contat us</a>
     </div>
   </div>

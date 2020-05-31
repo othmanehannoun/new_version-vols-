@@ -1,82 +1,129 @@
 <?php
-   session_start();
+   
+   include "header.php";
+   include  "les classe/volsclass.php";
    
     $db = mysqli_connect("127.0.0.1", "root", "", "db_gestionvols");
-    $query = mysqli_query($db, "SELECT * from vols ");
+    $query = mysqli_query($db, "SELECT * from vols");
+
+    if (isset($_POST['add'])){
+
+      $depart            = $_POST['depart'];
+      $destination       = $_POST['destination'];
+      $date_depart       = $_POST['date'];
+      $time              = $_POST['time'];
+      $prix              = $_POST['prix'];
+      $place_disponible  = $_POST['place'];
+      $status            = $_POST['status'];
+    
+	  $vols = new Vol();
+	  $vols->vol_insert($depart, $destination, $date_depart, $time, $prix, $place_disponible,$status );
+
+	  header("Location: vols.php");
+
+	}
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Vols</title>
-    <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+ <!-- My Box Content -->
     
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-</head>
-<body>
-
-<div class="wrapper">
-    <div class="sidebar">
-        <img src="../images/logo.png" alt="">
-        <ul>
+            <div class="session">
+            <?php echo "HELLO ADMIN". ' '. $_SESSION['USERNAME'];?>
+            </div>
             
-            <li><a href="admin.php"><i class="fas fa-user"></i>Admin Profile</a></li>
-            <li><a href="vols.php"><i class="fas fa-address-card"></i>Vols</a></li>
-            <li><a href="../home.php"><i class="fab fa-internet-explorer"></i>Web site</a></li>
-            
-        </ul> 
-        
-    </div>
-    <div class="main_content">
-        <div class="header"> <?php echo "HELLO ADMIN". ' '. $_SESSION['USERNAME'];?></div>  
-        <div class="info">
-          
-        <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Depart</th>
-      <th scope="col">Destination</th>
-      <th scope="col">Date depart</th>
-      <th scope="col">Time</th>
-      <th scope="col">Prix</th>
-      <th scope="col">N°:Place</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-
-  <?php while ($fetch = mysqli_fetch_array($query)) {
-        
-  ?>
-  <tbody>
-    <tr>
-      <th scope="row"><?php echo $fetch['idVol']; ?></th>
-      <td><?php echo $fetch['depart']; ?></td>
-      <td><?php echo $fetch['destination']; ?></td>
-      <td><?php echo $fetch['date_depart']; ?></td>
-      <td><?php echo $fetch['time']; ?></td>
-      <td><?php echo $fetch['prix']; ?></td>
-      <td><?php echo $fetch['place_disponible']; ?></td>
-      <td><a href="update.php?id=<?php echo $id; ?>">modifier</a>
-      <a href="suprimer.php?id=<?php echo $id; ?>">Suprimer</td>
-    </tr>
-  </tbody>
-
-  <?php } ?>
-</table>
+        </nav>
+ <div class="boxContent">
+     <div class="firstRow">
   
-</table>
-
-        </div>
+	 <?php
+	//  if (isset($_GET['message'])) {
+	// 	 $message = $_GET['message'];
+	// 	 echo  "<div class='alert alert-success'>".$message."</div>";  
+	//  }
+	 ?>
+   
+  <div class="addbtn">
+  <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New vol</span></a>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3">
+  <?php while($row = mysqli_fetch_array($query)){  ?>
+  <div class="col mb-4">
+    <div class="card h-100">
+    <div class="card-header"><?php echo $row['depart'].' '.'to'.' '.$row['destination'];?>
+    <span class="badge badge-primary"><?php echo $row['statu'];?></span>
+   </div>
+      <div class="card-body">
+        <h5 class="card-title">Date de depart: <span><?php echo $row['date_depart'];?></span></h5>
+        <h5 class="card-text">Time: <span><?php echo $row['time'];?></span></h5>
+        <h5 class="card-text">Prix: <span><?php echo $row['prix'];?>DH</span></h5>
+        <h5 class="card-text">place desponible: <span><?php echo $row['place_disponible'];?></span></h5>
+        
+      </div>
+      <div class="card-footer"><a href="editvol.php?id=<?php echo $row['idVol'];?>" class="btn btn-info"> Edit </a>
+        <a href="#" class="btn btn-primary" value=""><?php if($row['statu'] == "Activer"){
+          echo "Desactiver";
+        }
+        else{
+          echo "Activer";
+        }
+          
+          
+          
+          ?></a></div>
     </div>
+  </div>
+  <?php  }  ?>
 </div>
 
+<!-- Add Modal HTML -->
+	<div id="addEmployeeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form method="post" action="">
+					<div class="modal-header">						
+						<h4 class="modal-title">Add Vol</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<div class="form-group">
+							<label>depart</label>
+							<input type="text" class="form-control" name="depart" placeholder="Enter depart" required>
+						</div>
+						<div class="form-group">
+							<label>Destination</label>
+							<input type="text" class="form-control" name="destination" placeholder="Enter destination" required>
+						</div>
+						<div class="form-group">
+							<label>Date depart</label>
+							<input type="date"class="form-control" name="date" placeholder="Enter la date" required>
+						</div>
+						<div class="form-group">
+							<label>Time</label>
+							<input type="text" class="form-control" name="time" placeholder="Enter time">
+            </div>
+            <div class="form-group">
+							<label>Price</label>
+							<input type="text" class="form-control" name="prix" placeholder="Enter Price">
+            </div>
+            <div class="form-group">
+              <label>Place desponible</label>
+              <input type="number" class="form-control" placeholder="Enter numbre place" name="place" min="1" max="50">
+							
+						</div>					
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-success" name="add" value="Add" >
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<?php include "footer.html";  ?>
+           
+           
+                                       		                            
 </body>
 </html>

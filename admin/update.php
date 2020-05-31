@@ -1,7 +1,7 @@
 
 <?php
 include "header.php"; 
-include "userclass.php";
+include "les classe/userclass.php";
 $db = mysqli_connect("127.0.0.1", "root", "", "db_gestionvols");
 
    $id=$_GET['id'];

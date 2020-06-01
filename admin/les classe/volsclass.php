@@ -18,7 +18,7 @@ session_start();
         // --------Insert Function----------
 	      	function vol_insert($depart, $destination, $date_depart, $time, $prix, $place_disponible, $status) {	
 
-                $query = mysqli_query($this->conn, "INSERT INTO vols values ('', '$depart', '$destination', '$date_depart', '$time', '$prix', '$place_disponible', $status)");
+                $query = mysqli_query($this->conn, "INSERT INTO vols values ('', '$depart', '$destination', '$date_depart', '$time', '$prix', '$place_disponible', '$status')");
                 
                 if($query == true){
                 return true;	 

@@ -60,17 +60,8 @@
         <h5 class="card-text">place desponible: <span><?php echo $row['place_disponible'];?></span></h5>
         
       </div>
-      <div class="card-footer"><a href="editvol.php?id=<?php echo $row['idVol'];?>" class="btn btn-info"> Edit </a>
-        <a href="#" class="btn btn-primary" value=""><?php if($row['statu'] == "Activer"){
-          echo "Desactiver";
-        }
-        else{
-          echo "Activer";
-        }
-          
-          
-          
-          ?></a></div>
+      <div class="card-footer"><a href="editvol.php?id=<?php echo $row['idVol'];?>" class="btn btn-info float-right"> Edit </a>
+       </div>
     </div>
   </div>
   <?php  }  ?>
@@ -109,8 +100,18 @@
             <div class="form-group">
               <label>Place desponible</label>
               <input type="number" class="form-control" placeholder="Enter numbre place" name="place" min="1" max="50">
-							
-						</div>					
+            </div>
+
+            <div class="form-group">
+            <label for="exampleInputEmail1">Status</label>
+             <select name="status" class="form-control" id="inputGroupSelect01">
+
+              <option value="Activer">Activer</option>
+              <option value="Desactiver">Desactiver</option>
+              
+             </select>
+             </div>
+            
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

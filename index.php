@@ -14,7 +14,8 @@ if(mysqli_num_rows($query) > 0 ){
 
     $query1 = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' AND pass_word = '$pass' AND statu = 'User'" );
     if(mysqli_num_rows($query1) > 0 ){
-       $_SESSION['USERNAME'] = $username;
+	  $data = mysqli_fetch_array($query1);
+		$_SESSION['user'] = $data;
         header('location: home.php');
     }
 

@@ -17,7 +17,7 @@
       $status            = $_POST['status'];
     
 	  $vols = new Vol();
-	  $vols->vol_insert($depart, $destination, $date_depart, $time, $prix, $place_disponible,$status );
+	  $vols->vol_insert($depart, $destination, $date_depart, $time, $prix, $place_disponible, $status );
 
 	  header("Location: vols.php");
 
@@ -33,7 +33,7 @@
             </div>
             
         </nav>
- <div class="boxContent">
+     <div class="boxContent">
      <div class="firstRow">
   
 	 <?php

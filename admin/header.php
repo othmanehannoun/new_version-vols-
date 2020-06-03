@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<title></title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -28,8 +28,8 @@
             <ul>
                 <li><a href="admin.php">Dashbord</a></li>
                 <li><a href="vols.php">Vols disponible</a></li>
-                <li><a href="#">view website</a></li>
-                <li><a href="#">logout</a></li>
+                <li><a href="../home.php">view website</a></li>
+                <li><a href="../index.php">logout</a></li>
                 
             </ul>
         </div>

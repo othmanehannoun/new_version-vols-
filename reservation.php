@@ -69,9 +69,9 @@ if (isset($_POST['reserver'])){
   
         </div>
       </li>
- 
-      <a class="nav-item nav-link" href="index.php" style="color: black; background-color: yellow; border:0.5px solid #c3c3c3;">Log-out</a>
-    </div>
+      <button type="button" class="btn btn-warning">
+      <a href="index.php">Log-out</a></button>
+       </div>
   </div>
 </nav>
 

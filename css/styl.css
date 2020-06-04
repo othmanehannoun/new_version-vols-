@@ -29,7 +29,7 @@ img {
 
 .header{
   height: 100vh;
-  background-image: url(../images/b5.jpg);
+  background-image: url(../images/bh.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -46,11 +46,13 @@ h1{
   letter-spacing: 2px;
 }
 
-span{
+.span{
   color: #fde02f;
 }
 
-p{
+
+
+.p1{
   color: wheat;
   font-size: 18px;
 }
@@ -119,10 +121,46 @@ h2{
    margin-bottom: 28px;
 }
 
-h5{
+.h5{
 color: black;
 margin-bottom: 68px;
 }
 
+/* CSS CARD ---------------*/
+.row{
+  padding: 15px
+}
+.card-body{
+  margin-bottom: 13px;
+}
+.card-body h5{
+  font-size: 19px;
+  font-family: monospace;
+  
+}
+
+.card-body span{
+  color: #ab8d39;
+}
+
+.card-header{
+  color: #024c86;
+  font-size: 21px;
+  font-family: cursive;
+}
+
+.addbtn{
+    margin-bottom: 15px;
+}
+
+ .btn i {
+  float: left;
+  font-size: 21px;
+  margin-right: 5px;
+}
+
+.badge {
+  float: right;
+}
 
 

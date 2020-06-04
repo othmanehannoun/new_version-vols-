@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styl.css">
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -33,7 +33,8 @@
           <a class="dropdown-item" href="profil.php?id=<?php echo $_SESSION['user']['iduser'];?>">Profil</a>
         </div>
       </li>
-      <a class="nav-item nav-link" href="index.php" style="color: black; background-color: yellow; border:0.5px solid #c3c3c3;">Log-out</a>
+      <button type="button" class="btn btn-warning">
+      <a href="index.php">Log-out</a></button>
     </div>
   </div>
 </nav>
@@ -41,8 +42,8 @@
 
 <div class="header">
   <form action="" method="post">
-  <h1>Find your <span>Next tour!</span> </h1>
-    <p>Where would you like to go?</p>
+  <h1>Find your <span class="span">Next tour!</span> </h1>
+    <p class="p1">Where would you like to go?</p>
     <div class="font-box">
 
     <select name="depart" class="search-field skills" id="inputGroupSelect01">
@@ -70,9 +71,9 @@
 
 <center>
 <h2>Available flights</h2>
-<h5>Let yourself be guided by our thematic offers.</h5>
+<h5 class="h5">Let yourself be guided by our thematic offers.</h5>
 </center>
-<table class="table table-bordered" id="#table">
+<!-- <table class="table table-bordered" id="#table">
 
     <tr>
 
@@ -83,7 +84,7 @@
       <th scope="col">Price</th>
       <th scope="col">nombre de Place</th>
       <th scope="col">Reservation</th>
-    </tr>
+    </tr> -->
                 
     <?php 
             $db = mysqli_connect("localhost","root","","db_gestionVols");
@@ -93,7 +94,12 @@
                 $query = mysqli_query($db, "SELECT * FROM Vols WHERE depart = '$depart' AND destination = '$destination' AND place_disponible > 0 AND statu = 'Activer' "); 
       
                 if (mysqli_num_rows($query) > 0 ) {
-                while ($row = mysqli_fetch_array($query)){
+               
+    
+     ?>
+                
+   <div class="row row-cols-1 row-cols-md-3">
+     <?php  while ($row = mysqli_fetch_array($query)){
                     $id = $row['idVol'];
                     $depart = $row['depart'];
                     $destination = $row['destination'];
@@ -101,25 +107,29 @@
                     $time = $row['time'];
                     $prix = $row['prix'];
                     $nbrPlace = $row['place_disponible'];
-    
      ?>
-                <tbody>
-                    <tr>
-                      
-                      <td><?php echo $depart; ?></td>
-                      <td><?php echo $destination;?></td>
-                      <td><?php echo $date; ?></td>
-                      <td><?php echo $time; ?></td>
-                      <td><?php echo $prix;?>DH</td>
-                      <td><?php echo $nbrPlace; ?></td>
-                      <td><button type="button" class="btn btn-warning">
-                      <a href="reservation.php?id=<?php echo $id; ?>">Reserver</a></button></td>  
-                    </tr>
-                  </tbody>
-   <?php } }
+  <div class="col mb-4">
+    <div class="card h-100">
+    <div class="card-header"><?php echo $depart.' '.'to'.' '.$destination;?>
+   </div>
+      <div class="card-body">
+        <h5 class="card-title">Date de depart: <span><?php echo  $date;?></span></h5>
+        <h5 class="card-text">Time: <span><?php echo $time;?></span></h5>
+        <h5 class="card-text">Prix: <span><?php echo $prix;?>DH</span></h5>
+        <h5 class="card-text">place desponible: <span><?php echo $nbrPlace;?></span></h5>
+        
+      </div>
+      <div class="card-footer"><button type="button" class="btn btn-warning">
+                      <a href="reservation.php?id=<?php echo $id; ?>">Reserver</a></button>
+       </div>
+    </div>
+  </div>
+  <?php } }
      else { echo "<script> alert('Aucun resulta')</script>"; }
    }
    ?> 
+</div>
+  
    
      </table>
 

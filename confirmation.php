@@ -1,4 +1,5 @@
 <?php 
+session_start();
     $id_reserv = $_GET['id'];
     $db = mysqli_connect("localhost","root","","db_gestionVols");
     $query1 = mysqli_query($db, "SELECT * FROM reservation WHERE idreservation = $id_reserv");
@@ -38,7 +39,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/confi_css.css">
 
 
@@ -56,10 +57,18 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="home.php">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#">About</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link" href="#">Contat us</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?php echo $_SESSION['user']['username'];?>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="profil.php?id=<?php echo $_SESSION['user']['iduser'];?>">Profil</a>
+        </div>
+      </li>
+      <a class="nav-item nav-link" href="index.php" style="color: black; background-color: yellow; border:0.5px solid #c3c3c3;">Log-out</a>
     </div>
   </div>
 </nav>

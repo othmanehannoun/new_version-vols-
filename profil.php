@@ -13,7 +13,7 @@ include "nav.php";
                 </li>
                 
                 <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link"> Update your Profile</a>
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link"> your Profile</a>
                 </li>
             </ul>
             <div class="tab-content py-4" id="content">

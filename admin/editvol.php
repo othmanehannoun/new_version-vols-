@@ -85,7 +85,7 @@ if (isset($_POST['modifier'])) {
   </div>
  
   <button type="submit" class="btn btn-success" name="modifier">Submit</button>
-  <button type="submit" class="btn btn-red"><a href="admin.php">cannel</a></button>
+  <button type="submit" class="btn btn-red"><a href="vols.php">cannel</a></button>
 </form>
 
 

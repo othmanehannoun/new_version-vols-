@@ -108,6 +108,12 @@ a:hover{
   margin-left: 91px;
 }
 
+.table-bordered {
+  border: 1px solid #dee2e6;
+  width: 93%;
+  margin-left: 50px;
+}
+
 h2{
    color: black;
    margin-bottom: 28px;

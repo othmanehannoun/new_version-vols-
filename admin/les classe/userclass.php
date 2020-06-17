@@ -1,5 +1,5 @@
 <?php
-session_start();
+
  class User
  {
       public $user;
@@ -12,6 +12,23 @@ session_start();
 		   	$this->conn = new mysqli("localhost","root","", "db_gestionvols");
         }
         
+    // --------SELECT Function----------
+    function login($username, $pass) {
+    $query = mysqli_query($this->conn, "SELECT * FROM users WHERE username = '$username' AND pass_word = '$pass' " );
+    if(mysqli_num_rows($query) > 0 ){
+      $_SESSION['user'] = mysqli_fetch_array($query);
+      if( $_SESSION['user']['status'] == 'Admin'){
+        header('location: admin/admin.php');
+      } 
+      else{
+      header('location: home.php');
+      }
+     }
+
+    }
+      
+
+
     // --------Insert Function----------
     function user_insert($user, $mail, $pass, $status) 
     {	
@@ -33,7 +50,7 @@ session_start();
         mysqli_query($this->conn,"UPDATE users set username = '$name',
                                                    mail = '$email',
                                                    pass_word = '$password',
-                                                   statu = '$status'
+                                                   status = '$status'
                                                    WHERE iduser = '$id'");
          
     }

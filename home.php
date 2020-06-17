@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/styl.css">
+  <link rel="stylesheet" href="css/style.css">
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -73,25 +73,13 @@
 <h2>Available flights</h2>
 <h5 class="h5">Let yourself be guided by our thematic offers.</h5>
 </center>
-<!-- <table class="table table-bordered" id="#table">
-
-    <tr>
-
-      <th scope="col">Depart</th>
-      <th scope="col">Destianation</th>
-      <th scope="col">date de depart</th>
-      <th scope="col">Time</th>
-      <th scope="col">Price</th>
-      <th scope="col">nombre de Place</th>
-      <th scope="col">Reservation</th>
-    </tr> -->
                 
     <?php 
             $db = mysqli_connect("localhost","root","","db_gestionVols");
             if (isset($_POST['submit'])){
                 $depart = $_POST['depart'];
                 $destination = $_POST['destination'];
-                $query = mysqli_query($db, "SELECT * FROM Vols WHERE depart = '$depart' AND destination = '$destination' AND place_disponible > 0 AND statu = 'Activer' "); 
+                $query = mysqli_query($db, "SELECT * FROM Vols WHERE depart = '$depart' AND destination = '$destination' AND place_disponible > 0 AND status = 'Activer' "); 
       
                 if (mysqli_num_rows($query) > 0 ) {
                

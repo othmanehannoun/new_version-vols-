@@ -3,7 +3,6 @@
 	$db = mysqli_connect("127.0.0.1", "root", "", "db_gestionvols");
 
 	include "admin/les classe/userclass.php";
-
     if (isset($_POST['sinup'])){
 
       $user            = $_POST['username'];
@@ -23,7 +22,6 @@
 		header("location: inscription.php?error=Not registered successfully ");
 	  }
 	  }
-
 	}
 ?>
 

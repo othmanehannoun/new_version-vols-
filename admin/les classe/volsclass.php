@@ -1,5 +1,4 @@
 <?php
-session_start();
  class Vol
  {
         public $idVol;
@@ -43,7 +42,7 @@ session_start();
                                                 time = '$time', 
                                                 prix = '$prix', 
                                                 place_disponible = '$place_disponible', 
-                                                statu = '$status' 
+                                                status = '$status' 
                                                 where idVol = '$id1'");
     }
 

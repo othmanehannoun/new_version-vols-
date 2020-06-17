@@ -36,11 +36,11 @@
      <div class="boxContent">
      <div class="firstRow">
   
-	 <?php
-	//  if (isset($_GET['message'])) {
-	// 	 $message = $_GET['message'];
-	// 	 echo  "<div class='alert alert-success'>".$message."</div>";  
-	//  }
+     <?php
+      if (isset($_GET['message'])) {
+        $message = $_GET['message'];
+        echo  "<div class='alert alert-success'>".$message."</div>";  
+      }
 	 ?>
    
   <div class="addbtn">
@@ -51,7 +51,7 @@
   <div class="col mb-4">
     <div class="card h-100">
     <div class="card-header"><?php echo $row['depart'].' '.'to'.' '.$row['destination'];?>
-    <span class="badge badge-primary"><?php echo $row['statu'];?></span>
+    <span class="badge badge-primary"><?php echo $row['status'];?></span>
    </div>
       <div class="card-body">
         <h5 class="card-title">Date de depart: <span><?php echo $row['date_depart'];?></span></h5>

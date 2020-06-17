@@ -26,7 +26,7 @@ if (isset($_POST['modifier'])) {
      $vols->vol_update($id1, $depart, $destination, $date_depart, $time, $prix, $place_disponible, $status );
 
     if($vols == true){
-     header("location: vols.php");
+     header("location: vols.php?message=This is a success alert—check it out!");
    }
 
 }

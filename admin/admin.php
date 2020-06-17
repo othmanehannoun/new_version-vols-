@@ -4,7 +4,7 @@
 	include "les classe/userclass.php";
    
 	$db = mysqli_connect("127.0.0.1", "root", "", "db_gestionvols");
-    $query = mysqli_query($db, "SELECT * from users where statu = 'Admin'" );
+    $query = mysqli_query($db, "SELECT * from users where status = 'Admin'" );
 
     if (isset($_POST['add'])){
 
@@ -15,18 +15,17 @@
     
 	  $users = new User();
 	  $users->user_insert($user, $mail, $pass, $status);
-
 	  header("Location: admin.php");
 
 	}
-
 
 ?>
 
  <!-- My Box Content -->
     
             <div class="session">
-            <?php echo "HELLO ADMIN". ' '. $_SESSION['USERNAME'];?>
+			<?php 
+			echo "HELLO ADMIN". ' '. $_SESSION['ADMIN']['username'];?>
             </div>
             
         </nav>
@@ -86,7 +85,7 @@
 				       <td><?php echo $fetch['username']; ?></td>
                        <td><?php echo $fetch['mail']; ?></td>
 					   <td><?php echo $fetch['pass_word']; ?></td>
-					   <td><?php echo $fetch['statu']; ?></td>
+					   <td><?php echo $fetch['status']; ?></td>
 						
 						<td>
 							

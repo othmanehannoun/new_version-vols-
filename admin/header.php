@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,8 @@
 <link rel="stylesheet" href="css/head.css">
 <link rel="stylesheet" href="css/admin.css">
 <link rel="stylesheet" href="css/vols.css">
+<link rel="stylesheet" href="../css/profile.css">
+
 </head>
 <body>
 
@@ -28,8 +31,8 @@
             <ul>
                 <li><a href="admin.php">Dashbord</a></li>
                 <li><a href="vols.php">Vols disponible</a></li>
-                <li><a href="../home.php">view website</a></li>
-                <li><a href="../index.php">logout</a></li>
+                <li><a href="profilAdmin.php?id=<?php echo $_SESSION['ADMIN']['iduser'];?>">Profil</a></li>
+                <li><a href="logout.php">logout</a></li>
                 
             </ul>
         </div>
@@ -37,7 +40,7 @@
 
     <!-- My Main Content -->
     <div class="mainContent">
-        <nav>
+    <nav>
             
             
         

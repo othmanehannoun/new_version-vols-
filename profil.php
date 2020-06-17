@@ -3,7 +3,6 @@ $db = mysqli_connect("127.0.0.1", "root", "", "db_gestionvols");
 include "nav.php";
 ?>
 
-
 <div class="container">
     <div class="row my-2">
         <div class="col-lg-8 order-lg-2">
@@ -31,22 +30,24 @@ include "nav.php";
             <th>Depart</th>
             <th>Destination</th>
             <th>Date reservation</th>
+            <th>Prix</th>
             <th>Status</th>
             </tr>';
-            while ($reservation_data =  mysqli_fetch_array($reservation)) {
-            $idclient     = $reservation_data['idClient'];
-            $idvol = $reservation_data['idVol'];
-            $date = $reservation_data['date_reseravtion'];
-            $sqlvol = "SELECT * FROM vols WHERE idVol = '" . $idvol . "'";
-            $vol = mysqli_query($db, $sqlvol);
-            $vol_rows = mysqli_num_rows($vol);
+            while ($reservation_data = mysqli_fetch_array($reservation)) {
+            $idclient   = $reservation_data['idClient'];
+            $idvol      = $reservation_data['idVol'];
+            $date       = $reservation_data['date_reseravtion'];
+            $sqlvol     = "SELECT * FROM vols WHERE idVol = '" . $idvol . "'";
+            $vol        = mysqli_query($db, $sqlvol);
+            $vol_rows   = mysqli_num_rows($vol);
             if ($vol_rows > 0) {
                 while ($vol_data = mysqli_fetch_array($vol)) {
                     echo "<tr>";
                     echo "<td>" . $vol_data['depart'] . "</td>";
                     echo "<td>" . $vol_data['destination'] . "</td>";
                     echo "<td>" . $date . "</td>";
-                    echo "<td>" . $vol_data['statu'] . "</td>";
+                    echo "<td>" . $vol_data['prix'] . " DH</td>";
+                    echo "<td>" . $vol_data['status'] . "</td>";
                     echo "<td> <button class='btn btn-info' data-toggle='modal' data-target='#exampleModal' onclick='showClient(" . $idclient . ")'>Info</button> </td>";
                     echo "</tr>";
                 }
@@ -79,13 +80,13 @@ include "nav.php";
                             <label class="col-lg-3 col-form-label form-control-label">First name</label>
                             <div class="col-lg-9">
                             <input type="hidden" name="id" value="<?php echo $userid ?>" >
-                                <input class="form-control" type="text"  name="username" value="<?php echo  $userName ?>">
+                                <h5 class="h5"> <?php echo  $userName ?> </h5>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                             <div class="col-lg-9">
-                            <input class="form-control" type="text" name="email" value="<?php echo  $userEmail ?>">
+                            <h5 class="h5"><?php echo  $userEmail ?></h5>
                             </div>
                         </div>
                         
@@ -95,14 +96,6 @@ include "nav.php";
                             <input name="password" class="form-control" type="password" placeholder="••••••">
                             </div>
                         </div>
-                        
-                        <!-- <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Cancel">
-                                <input type="submit" class="btn btn-primary" value="Save Changes" name="submit">
-                            </div> -->
-
                             <?php  }  ?>
                             <?php  }  ?>
                         </div>
@@ -125,7 +118,7 @@ include "nav.php";
         </button>
       </div>
       <div class="modal-body" id="demo">
-        kkkkkk
+        
       </div>
      
     </div>

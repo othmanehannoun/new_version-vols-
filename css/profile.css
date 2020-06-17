@@ -16,6 +16,7 @@
     margin-bottom: 18px;
 }
 #content{
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: 10px;
     padding: 0px 10px;
@@ -31,4 +32,13 @@
 }
 .mb{
   font-size: 20px;
+}
+.h4{
+    font-size: 21px;
+    font-family: inherit;
+    margin-left: 226px;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 11px 8px;
+    width: 15%;
 }

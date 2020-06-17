@@ -1,25 +1,16 @@
 <?php
 session_start();
+include "admin/les classe/userclass.php";
 
 $conn = mysqli_connect('localhost', 'root', '', 'db_gestionvols');
 if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $pass = $_POST['pass'];
 
-$query = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' AND pass_word = '$pass' AND statu = 'Admin'" );
-if(mysqli_num_rows($query) > 0 ){
-    $_SESSION['USERNAME'] = $username;
-    header('location: admin/admin.php');
-}
+   $login = new User; 
+   $login->login($username, $pass);
+   }
 
-    $query1 = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' AND pass_word = '$pass' AND statu = 'User'" );
-    if(mysqli_num_rows($query1) > 0 ){
-	  $data = mysqli_fetch_array($query1);
-		$_SESSION['user'] = $data;
-        header('location: home.php');
-    }
-
-}
 ?>
 
 

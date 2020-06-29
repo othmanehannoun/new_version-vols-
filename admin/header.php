@@ -31,7 +31,7 @@
             <ul>
                 <li><a href="admin.php">Dashbord</a></li>
                 <li><a href="vols.php">Vols disponible</a></li>
-                <li><a href="profilAdmin.php?id=<?php echo $_SESSION['ADMIN']['iduser'];?>">Profil</a></li>
+                <li><a href="profilAdmin.php?id=<?php echo $_SESSION['user']['iduser'];?>">Profil</a></li>
                 <li><a href="logout.php">logout</a></li>
                 
             </ul>

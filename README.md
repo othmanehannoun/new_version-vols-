@@ -18,7 +18,7 @@ Maintenant, connexion à la base de données
   4: ouvrez un navigateur et accédez à l'URL "http: // localhost / phpmyadmin /"
   5: Ensuite, cliquez sur l'onglet bases de données
   6: créer une base de données nommant "db_gestionvols" puis cliquer sur l'onglet d'importation
-  7: Cliquez sur parcourir le fichier et sélectionnez le fichier "db_gestionvols.sql" qui se trouve dans le dossier
+  7: Cliquez sur parcourir le fichier et sélectionnez le fichier "db_gestionvols.sql" qui se trouve dans le dossier reservation-des-vol-P2
   8: cliquez sur go.
  ```
 Après avoir créé la base de données

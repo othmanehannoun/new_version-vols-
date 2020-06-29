@@ -19,7 +19,7 @@
    
 <div class="session">
 			<?php 
-			echo "HELLO ADMIN". ' '. $_SESSION['ADMIN']['username'];?>
+			echo "HELLO ADMIN". ' '. $_SESSION['user']['username'];?>
             </div>
             
         </nav>
